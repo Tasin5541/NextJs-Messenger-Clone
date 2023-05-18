@@ -9,15 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next-auth/prisma-adapter": "^1.0.6",
+    "@prisma/client": "^4.14.1",
     "@tailwindcss/forms": "^0.5.3",
     "@types/node": "20.2.0",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
+    "bcrypt": "^5.1.0",
     "clsx": "^1.2.1",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
     "next": "13.4.2",
+    "next-auth": "^4.22.1",
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -27,8 +31,8 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@prisma/client": "^4.14.1",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+    "@types/bcrypt": "^5.0.0",
     "prettier": "^2.8.8",
     "prisma": "^4.14.1"
   }
