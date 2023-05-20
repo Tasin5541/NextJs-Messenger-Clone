@@ -6,6 +6,8 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 
+import { signIn } from "next-auth/react";
+
 import Button from "../../components/Button";
 import Input from "../../components/inputs/Input";
 import AuthSocialButton from "./AuthSocialButton";
@@ -47,14 +49,39 @@ const AuthForm = () => {
     }
 
     if (variant === "LOGIN") {
-      // NextAuth login
+      signIn("credentials", {
+        ...data,
+        redirect: false,
+      })
+        .then((callback) => {
+          if (callback?.error) {
+            toast.error("Invalid credentials!");
+            return;
+          }
+
+          if (callback?.ok) {
+            toast.success("logged in");
+          }
+        })
+        .finally(() => setIsLoading(false));
     }
   };
 
   const socialAction = (action: string) => {
     setIsLoading(true);
 
-    // NextAuth social Sign in
+    signIn(action, { redirect: false })
+      .then((callback) => {
+        if (callback?.error) {
+          toast.error("Invalid credentials!");
+          return;
+        }
+
+        if (callback?.ok) {
+          toast.success("logged in");
+        }
+      })
+      .finally(() => setIsLoading(false));
   };
 
   return (
