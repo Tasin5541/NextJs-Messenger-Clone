@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 
 import Button from "../../components/Button";
@@ -39,7 +40,10 @@ const AuthForm = () => {
     setIsLoading(true);
 
     if (variant === "REGISTER") {
-      axios.post("/api/register", data);
+      axios
+        .post("/api/register", data)
+        .catch(() => toast.error("Something went wrong!"))
+        .finally(() => setIsLoading(false));
     }
 
     if (variant === "LOGIN") {
@@ -115,17 +119,17 @@ const AuthForm = () => {
         </div>
         <div
           className="
-            flex 
-            gap-2 
-            justify-center 
-            text-sm 
             mt-6 
+            flex 
+            justify-center 
+            gap-2 
             px-2 
+            text-sm 
             text-gray-500
           "
         >
           <div>{variant === "LOGIN" ? "New to Messenger?" : "Already have an account?"}</div>
-          <div onClick={toggleVariant} className="underline cursor-pointer">
+          <div onClick={toggleVariant} className="cursor-pointer underline">
             {variant === "LOGIN" ? "Create an account" : "Login"}
           </div>
         </div>
