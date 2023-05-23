@@ -33,7 +33,7 @@ const DesktopSidebar: React.FC = () => {
           <ul role="list" className="flex flex-col items-center space-y-1">
             {routes.map((item) => (
               <DesktopItem
-                key={item.label}
+                key={item.href}
                 href={item.href}
                 label={item.label}
                 icon={item.icon}
