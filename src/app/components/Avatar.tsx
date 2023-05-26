@@ -9,7 +9,7 @@ interface AvatarProps {
 
 const Avatar: React.FC<AvatarProps> = ({ user }) => {
   return (
-    <div className="relative">
+    <div className="relative h-9 md:h-11">
       <div
         className="
         relative 
