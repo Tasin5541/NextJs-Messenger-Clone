@@ -33,3 +33,5 @@ const ConversationId = async ({ params }: { params: IParams }) => {
     </div>
   );
 };
+
+export default ConversationId;
