@@ -55,7 +55,7 @@ const Form = () => {
       <CldUploadButton
         options={{ maxFiles: 1 }}
         onUpload={handleUpload}
-        uploadPreset="NextJs-Messenger-Clone"
+        uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME}
       >
         <HiPhoto size={30} className="text-sky-500" />
       </CldUploadButton>
