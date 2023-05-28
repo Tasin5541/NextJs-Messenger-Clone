@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 
 import Button from "../../components/Button";
 import Input from "../../components/inputs/Input";
+import LoadingModal from "../../components/modals/LoadingModal";
 import AuthSocialButton from "./AuthSocialButton";
 
 type Variant = "LOGIN" | "REGISTER";
@@ -35,7 +36,7 @@ const AuthForm = () => {
 
   useEffect(() => {
     if (session?.status === "authenticated") {
-      router.push("/users");
+      router.push("/conversations");
     }
   }, [session?.status, router]);
 
@@ -71,7 +72,7 @@ const AuthForm = () => {
 
           if (callback?.ok) {
             toast.success("logged in");
-            router.push("/users");
+            router.push("/conversations");
           }
         })
         .finally(() => setIsLoading(false));
@@ -96,67 +97,69 @@ const AuthForm = () => {
   };
 
   return (
-    <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-      <div className=" bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
-        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-          {variant === "REGISTER" && (
+    <>
+      {session?.status === "loading" && <LoadingModal />}
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className=" bg-white px-4 py-8 shadow sm:rounded-lg sm:px-10">
+          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+            {variant === "REGISTER" && (
+              <Input
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
+                id="name"
+                label="Name"
+              />
+            )}
             <Input
               disabled={isLoading}
               register={register}
               errors={errors}
               required
-              id="name"
-              label="Name"
+              id="email"
+              label="Email address"
+              type="email"
             />
-          )}
-          <Input
-            disabled={isLoading}
-            register={register}
-            errors={errors}
-            required
-            id="email"
-            label="Email address"
-            type="email"
-          />
-          <Input
-            disabled={isLoading}
-            register={register}
-            errors={errors}
-            required
-            id="password"
-            label="Password"
-            type="password"
-          />
-          <div>
-            <Button disabled={isLoading} fullWidth type="submit">
-              {variant === "LOGIN" ? "Sign in" : "Register"}
-            </Button>
-          </div>
-        </form>
-        <div className="mt-6">
-          <div className="relative">
-            <div
-              className="
+            <Input
+              disabled={isLoading}
+              register={register}
+              errors={errors}
+              required
+              id="password"
+              label="Password"
+              type="password"
+            />
+            <div>
+              <Button disabled={isLoading} fullWidth type="submit">
+                {variant === "LOGIN" ? "Sign in" : "Register"}
+              </Button>
+            </div>
+          </form>
+          <div className="mt-6">
+            <div className="relative">
+              <div
+                className="
                 absolute 
                 inset-0 
                 flex 
                 items-center
               "
-            >
-              <div className="w-full border-t border-gray-300" />
+              >
+                <div className="w-full border-t border-gray-300" />
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="bg-white px-2 text-gray-500">Or continue with</span>
+              </div>
             </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="bg-white px-2 text-gray-500">Or continue with</span>
-            </div>
-          </div>
 
-          <div className="mt-6 flex gap-2">
-            <AuthSocialButton icon={BsGithub} onClick={() => socialAction("github")} />
-            <AuthSocialButton icon={BsGoogle} onClick={() => socialAction("google")} />
+            <div className="mt-6 flex gap-2">
+              <AuthSocialButton icon={BsGithub} onClick={() => socialAction("github")} />
+              <AuthSocialButton icon={BsGoogle} onClick={() => socialAction("google")} />
+            </div>
           </div>
-        </div>
-        <div
-          className="
+          <div
+            className="
             mt-6 
             flex 
             justify-center 
@@ -165,14 +168,15 @@ const AuthForm = () => {
             text-sm 
             text-gray-500
           "
-        >
-          <div>{variant === "LOGIN" ? "New to Messenger?" : "Already have an account?"}</div>
-          <div onClick={toggleVariant} className="cursor-pointer underline">
-            {variant === "LOGIN" ? "Create an account" : "Login"}
+          >
+            <div>{variant === "LOGIN" ? "New to Messenger?" : "Already have an account?"}</div>
+            <div onClick={toggleVariant} className="cursor-pointer underline">
+              {variant === "LOGIN" ? "Create an account" : "Login"}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
