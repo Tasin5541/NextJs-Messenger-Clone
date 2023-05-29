@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import getCurrentUser from "../../actions/getCurrentUser";
 import prisma from "../../libs/prismadb";
+import { pusherEvents, pusherServer } from "../../libs/pusher";
 
 export async function POST(request: Request) {
   try {
@@ -36,6 +37,13 @@ export async function POST(request: Request) {
         include: {
           users: true,
         },
+      });
+
+      // Update all connections with new conversation
+      newConversation.users.forEach((user) => {
+        if (user.email) {
+          pusherServer.trigger(user.email, pusherEvents.NEW_CONVERSATION, newConversation);
+        }
       });
 
       return NextResponse.json(newConversation);
@@ -80,6 +88,13 @@ export async function POST(request: Request) {
       include: {
         users: true,
       },
+    });
+
+    // Update all connections with new conversation
+    newConversation.users.map((user) => {
+      if (user.email) {
+        pusherServer.trigger(user.email, pusherEvents.NEW_CONVERSATION, newConversation);
+      }
     });
 
     return NextResponse.json(newConversation);

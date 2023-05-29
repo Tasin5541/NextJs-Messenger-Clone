@@ -9,6 +9,7 @@ import { format } from "date-fns";
 
 import Avatar from "../../../components/Avatar";
 import AvatarGroup from "../../../components/AvatarGroup";
+import useActiveList from "../../../hooks/useActiveList";
 import useOtherUser from "../../../hooks/useOtherUser";
 import ConfirmModal from "./ConfirmModal";
 
@@ -20,7 +21,7 @@ interface ProfileDrawerProps {
   };
 }
 
-const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose, data }) => {
+const ChatDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose, data }) => {
   const [confirmOpen, setConfirmOpen] = useState(false);
   const otherUser = useOtherUser(data);
 
@@ -32,13 +33,15 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose, data }) 
     return data.name || otherUser.name;
   }, [data.name, otherUser.name]);
 
+  const { members } = useActiveList();
+  const isActive = members.indexOf(otherUser?.email!) !== -1;
   const statusText = useMemo(() => {
     if (data.isGroup) {
       return `${data.users.length} members`;
     }
 
-    return "Active";
-  }, [data]);
+    return isActive ? "Active" : "Offline";
+  }, [data.isGroup, data.users.length, isActive]);
 
   return (
     <>
@@ -203,4 +206,4 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose, data }) 
   );
 };
 
-export default ProfileDrawer;
+export default ChatDrawer;
