@@ -1,3 +1,4 @@
+import ActiveStatus from "./components/ActiveStatus";
 import AuthContext from "./context/AuthContext";
 import ToasterContext from "./context/ToasterContext";
 import "./globals.css";
@@ -12,6 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body suppressHydrationWarning={true}>
         <AuthContext>
+          <ActiveStatus />
           <ToasterContext />
           {children}
         </AuthContext>

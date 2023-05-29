@@ -10,7 +10,8 @@ import Link from "next/link";
 
 import Avatar from "../../../components/Avatar";
 import AvatarGroup from "../../../components/AvatarGroup";
-import ProfileDrawer from "./ProfileDrawer";
+import useActiveList from "../../../hooks/useActiveList";
+import ChatDrawer from "./ChatDrawer";
 
 interface HeaderProps {
   conversation: Conversation & {
@@ -22,17 +23,19 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
   const otherUser = useOtherUser(conversation);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
+  const { members } = useActiveList();
+  const isActive = members.indexOf(otherUser?.email!) !== -1;
   const statusText = useMemo(() => {
     if (conversation.isGroup) {
       return `${conversation.users.length} members`;
     }
 
-    return "Active";
-  }, [conversation]);
+    return isActive ? "Active" : "Offline";
+  }, [conversation.isGroup, conversation.users.length, isActive]);
 
   return (
     <>
-      <ProfileDrawer data={conversation} isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
+      <ChatDrawer data={conversation} isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} />
       <div
         className="
         bg-white 
