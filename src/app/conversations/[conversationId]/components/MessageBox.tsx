@@ -64,8 +64,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast }) => {
                 object-cover 
                 cursor-pointer 
                 hover:scale-110 
-                transition 
-                translate
+                transition
               "
             />
           ) : (
