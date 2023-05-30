@@ -31,6 +31,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
               bg-gray-500 
               bg-opacity-75 
               transition-opacity
+              dark:bg-lightgray
             "
           />
         </Transition.Child>
@@ -74,6 +75,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                   sm:w-full 
                   sm:max-w-lg 
                   sm:p-6
+                  dark:bg-dusk
                 "
               >
                 <div
@@ -99,6 +101,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                       focus:ring-2 
                       focus:ring-indigo-500 
                       focus:ring-offset-2
+                      dark:bg-dusk
                     "
                     onClick={onClose}
                   >

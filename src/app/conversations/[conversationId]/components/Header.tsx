@@ -49,6 +49,8 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
         justify-between 
         items-center 
         shadow-sm
+        dark:bg-dusk
+        dark:border-lightgray
       "
       >
         <div className="flex gap-3 items-center">
@@ -71,9 +73,11 @@ const Header: React.FC<HeaderProps> = ({ conversation }) => {
             <Avatar user={otherUser} />
           )}
 
-          <div className="flex flex-col">
+          <div className="flex flex-col dark:text-gray-200">
             <div>{conversation.name || otherUser.name}</div>
-            <div className="text-sm font-light text-neutral-500">{statusText}</div>
+            <div className="text-sm font-light text-neutral-500 dark:text-gray-400">
+              {statusText}
+            </div>
           </div>
         </div>
         <HiEllipsisHorizontal

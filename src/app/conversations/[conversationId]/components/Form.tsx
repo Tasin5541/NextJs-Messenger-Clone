@@ -50,6 +50,8 @@ const Form = () => {
         gap-2 
         lg:gap-4 
         w-full
+        dark:bg-dusk
+        dark:border-lightgray
       "
     >
       <CldUploadButton

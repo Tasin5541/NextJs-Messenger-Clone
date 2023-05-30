@@ -5,6 +5,7 @@ import { useState } from "react";
 import { User } from "@prisma/client";
 
 import useRoutes from "../../hooks/useRoutes";
+import ThemeToggle from "../theme/ThemeToggle";
 import DesktopItem from "./DesktopItem";
 import ProfileItem from "./ProfileItem";
 
@@ -33,6 +34,8 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
         lg:flex
         lg:flex-col
         justify-between
+        dark:bg-dusk
+        dark:border-lightgray
       "
       >
         <nav className="mt-4 flex flex-col justify-between">
@@ -50,6 +53,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
           </ul>
         </nav>
         <nav className="mt-4 flex flex-col justify-between items-center">
+          <ThemeToggle />
           <ProfileItem currentUser={currentUser} />
         </nav>
       </div>
