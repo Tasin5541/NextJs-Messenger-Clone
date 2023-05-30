@@ -26,6 +26,7 @@ const LoadingModal = () => {
               bg-opacity-50 
               transition-opacity
               dark:bg-lightgray
+              dark:bg-opacity-50
             "
           />
         </Transition.Child>
