@@ -24,7 +24,10 @@ const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium leading-6  text-gray-900">
+      <label
+        htmlFor={id}
+        className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200"
+      >
         {label}
       </label>
       <div className="mt-2">
@@ -52,7 +55,10 @@ const Input: React.FC<InputProps> = ({
             focus:ring-inset 
             focus:ring-sky-600 
             sm:text-sm 
-            sm:leading-6`,
+            sm:leading-6
+            dark:bg-lightgray
+            dark:ring-gray-500
+            dark:text-white`,
             errors[id] && "focus:ring-rose-500",
             disabled && "opacity-50 cursor-default"
           )}

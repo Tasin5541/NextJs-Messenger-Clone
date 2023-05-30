@@ -69,11 +69,14 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, currentU
                 font-semibold 
                 leading-7 
                 text-gray-900
+                dark:text-gray-200
               "
             >
               Profile
             </h2>
-            <p className="mt-1 text-sm leading-6 text-gray-600">Edit your profile information.</p>
+            <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-300">
+              Edit your profile information.
+            </p>
 
             <div className="mt-10 flex flex-col gap-y-8">
               <Input
@@ -93,6 +96,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, currentU
                     font-medium 
                     leading-6 
                     text-gray-900
+                    dark:text-gray-200
                   "
                 >
                   Photo

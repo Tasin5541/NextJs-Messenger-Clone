@@ -4,7 +4,9 @@ import useConversation from "@/app/hooks/useConversation";
 import useRoutes from "@/app/hooks/useRoutes";
 import { User } from "@prisma/client";
 
+import ThemeToggle from "../theme/ThemeToggle";
 import MobileItem from "./MobileItem";
+import MobileLink from "./MobileLink";
 import ProfileItem from "./ProfileItem";
 
 interface MobileFooterProps {
@@ -33,10 +35,12 @@ const MobileFooter: React.FC<MobileFooterProps> = ({ currentUser }) => {
         bg-white 
         border-t-[1px] 
         lg:hidden
+        dark:bg-dusk
+        dark:border-lightgray
       "
       >
         {routes.map((route) => (
-          <MobileItem
+          <MobileLink
             key={route.href}
             href={route.href}
             active={route.active}
@@ -44,21 +48,12 @@ const MobileFooter: React.FC<MobileFooterProps> = ({ currentUser }) => {
             onClick={route.onClick}
           />
         ))}
-        <div
-          className="
-            group 
-            flex 
-            gap-x-3 
-            text-sm 
-            leading-6 
-            font-semibold 
-            w-full 
-            justify-center 
-            text-gray-500 
-            "
-        >
+        <MobileItem>
+          <ThemeToggle />
+        </MobileItem>
+        <MobileItem>
           <ProfileItem currentUser={currentUser} />
-        </div>
+        </MobileItem>
       </div>
     </>
   );

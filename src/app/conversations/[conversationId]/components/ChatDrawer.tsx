@@ -73,13 +73,13 @@ const ChatDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose, data }) => 
                   leaveTo="translate-x-full"
                 >
                   <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
-                    <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
+                    <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl dark:bg-dusk">
                       <div className="px-4 sm:px-6">
                         <div className="flex items-start justify-end">
                           <div className="ml-3 flex h-7 items-center">
                             <button
                               type="button"
-                              className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                              className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-dusk"
                               onClick={onClose}
                             >
                               <span className="sr-only">Close panel</span>
@@ -98,16 +98,18 @@ const ChatDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose, data }) => 
                             )}
                           </div>
                           <div>{title}</div>
-                          <div className="text-sm text-gray-500">{statusText}</div>
+                          <div className="text-sm text-gray-500 dark:text-white">{statusText}</div>
                           <div className="flex gap-10 my-8">
                             <div
                               onClick={() => setConfirmOpen(true)}
                               className="flex flex-col gap-3 items-center cursor-pointer hover:opacity-75"
                             >
-                              <div className="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center">
+                              <div className="w-10 h-10 bg-neutral-100 rounded-full flex items-center justify-center dark:bg-lightgray dark:text-gray-200">
                                 <IoTrash size={20} />
                               </div>
-                              <div className="text-sm font-light text-neutral-600">Delete</div>
+                              <div className="text-sm font-light text-neutral-600 dark:text-gray-200">
+                                Delete
+                              </div>
                             </div>
                           </div>
                           <div className="w-full pb-5 pt-5 sm:px-0 sm:pt-0">
@@ -116,22 +118,24 @@ const ChatDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose, data }) => 
                                 <div>
                                   <dt
                                     className="
-                                  text-sm 
-                                  font-medium 
-                                  text-gray-500 
-                                  sm:w-40 
-                                  sm:flex-shrink-0
-                                "
+                                      text-sm 
+                                      font-medium 
+                                      text-gray-500 
+                                      sm:w-40 
+                                      sm:flex-shrink-0
+                                      dark:text-gray-200
+                                    "
                                   >
                                     Emails
                                   </dt>
                                   <dd
                                     className="
-                                  mt-1 
-                                  text-sm 
-                                  text-gray-900 
-                                  sm:col-span-2
-                                "
+                                      mt-1 
+                                      text-sm 
+                                      text-gray-900 
+                                      sm:col-span-2
+                                      dark:text-gray-50
+                                    "
                                   >
                                     {data.users.map((user) => user.email).join(", ")}
                                   </dd>
@@ -141,22 +145,24 @@ const ChatDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose, data }) => 
                                 <div>
                                   <dt
                                     className="
-                                  text-sm 
-                                  font-medium 
-                                  text-gray-500 
-                                  sm:w-40 
-                                  sm:flex-shrink-0
-                                "
+                                      text-sm 
+                                      font-medium 
+                                      text-gray-500 
+                                      sm:w-40 
+                                      sm:flex-shrink-0
+                                      dark:text-gray-200
+                                    "
                                   >
                                     Email
                                   </dt>
                                   <dd
                                     className="
-                                  mt-1 
-                                  text-sm 
-                                  text-gray-900 
-                                  sm:col-span-2
-                                "
+                                      mt-1 
+                                      text-sm 
+                                      text-gray-900 
+                                      sm:col-span-2
+                                      dark:text-gray-50
+                                    "
                                   >
                                     {otherUser.email}
                                   </dd>
@@ -168,22 +174,24 @@ const ChatDrawer: React.FC<ProfileDrawerProps> = ({ isOpen, onClose, data }) => 
                                   <div>
                                     <dt
                                       className="
-                                    text-sm 
-                                    font-medium 
-                                    text-gray-500 
-                                    sm:w-40 
-                                    sm:flex-shrink-0
-                                  "
+                                        text-sm 
+                                        font-medium 
+                                        text-gray-500 
+                                        sm:w-40 
+                                        sm:flex-shrink-0
+                                        dark:text-gray-200
+                                      "
                                     >
                                       Joined
                                     </dt>
                                     <dd
                                       className="
-                                    mt-1 
-                                    text-sm 
-                                    text-gray-900 
-                                    sm:col-span-2
-                                  "
+                                        mt-1 
+                                        text-sm 
+                                        text-gray-900 
+                                        sm:col-span-2
+                                        dark:text-gray-50
+                                      "
                                     >
                                       <time dateTime={joinedDate}>{joinedDate}</time>
                                     </dd>
