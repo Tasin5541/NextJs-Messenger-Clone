@@ -32,6 +32,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
               bg-opacity-75 
               transition-opacity
               dark:bg-lightgray
+              dark:bg-opacity-75
             "
           />
         </Transition.Child>
