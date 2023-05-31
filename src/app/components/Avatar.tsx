@@ -27,7 +27,12 @@ const Avatar: React.FC<AvatarProps> = ({ user }) => {
         md:w-11
       "
       >
-        <Image fill src={user?.image || "/images/avatar-placeholder.png"} alt="Avatar" />
+        <Image
+          className="object-cover"
+          fill
+          src={user?.image || "/images/avatar-placeholder.png"}
+          alt="Avatar"
+        />
       </div>
       {isActive && (
         <span
