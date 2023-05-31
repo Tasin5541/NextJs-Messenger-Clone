@@ -25,6 +25,10 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
   }, [conversationId]);
 
   useEffect(() => {
+    bottomRef?.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  useEffect(() => {
     pusherClient.subscribe(conversationId);
     bottomRef?.current?.scrollIntoView();
 
@@ -38,8 +42,6 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
 
         return [...current, message];
       });
-
-      bottomRef?.current?.scrollIntoView();
     };
 
     const updateMessageHandler = (newMessage: FullMessageType) => {
@@ -70,7 +72,7 @@ const Body: React.FC<BodyProps> = ({ initialMessages = [] }) => {
       {messages.map((message, i) => (
         <MessageBox isLast={i === messages.length - 1} key={message.id} data={message} />
       ))}
-      <div className="pt-10" ref={bottomRef} />
+      <div className="pt-1" ref={bottomRef} />
     </div>
   );
 };
