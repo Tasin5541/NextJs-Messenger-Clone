@@ -39,13 +39,13 @@ const UserBox: React.FC<UserBoxProps> = ({ data }) => {
           flex 
           items-center 
           space-x-3 
-          bg-white 
           p-3 
           hover:bg-neutral-100
           rounded-lg
           transition
           cursor-pointer
           dark:bg-dusk
+          dark:hover:bg-lightgray
         "
       >
         <Avatar user={data} />

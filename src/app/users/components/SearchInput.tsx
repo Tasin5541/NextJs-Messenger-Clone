@@ -36,6 +36,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ placeholder, id, setSearchBy 
       className="
           text-black
           font-light
+          mb-2
           py-2
           px-4
           bg-neutral-100 
