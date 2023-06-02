@@ -28,6 +28,8 @@ See a [live demo](https://nextjs-messenger-clone-tasin5541.vercel.app/) on Verce
 </p>
 
 - Real-time chat update with Pusher
+- Group chat
+- Delete chat history
 - Image hosting with Cloudinary
 - Dynamic Theme support (Light and Dark mode)
 - Support for both Desktop and Mobile screens
