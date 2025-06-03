@@ -1,6 +1,6 @@
 # NextJs-Messenger-Clone
 
-<a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FTasin5541%2FNextJs-Messenger-Clone&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
+<a href="https://hitscounter.dev/"><img src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Fgithub.com%2FTasin5541%2FNextJs-Messenger-Clone&label=visitors&icon=github&color=%23198754"/></a>
 
 A fully responsive real-time chat app made with NextJs 13 (app router), MongoDB, Tailwind CSS, Pusher, Next-Auth and Cloudinary.
 
